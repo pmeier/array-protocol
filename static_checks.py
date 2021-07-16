@@ -1,16 +1,15 @@
 import enum
-from typing import TypeVar, Union, Any, Tuple, Optional
+from typing import Any, Optional, Tuple, TypeVar, Union
 
-from provider import ArrayImplementation
 from consumer import (
-    VendoredArrayProtocol,
-    VendoredDtype,
-    VendoredDevice,
     VendoredArrayNamespace,
+    VendoredArrayProtocol,
+    VendoredDevice,
+    VendoredDtype,
     VendoredPyCapsule,
     VendoredShape,
 )
-
+from provider import ArrayImplementation
 
 AIT = ArrayImplementation
 AI = AIT()

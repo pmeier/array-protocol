@@ -1,5 +1,8 @@
 import enum
-from typing import Union, Optional, Any, Tuple
+from typing import TYPE_CHECKING, Any, Optional, Tuple, Union
+
+if TYPE_CHECKING:
+    from builtins import ellipsis
 
 
 class ArrayImplementation:
@@ -82,7 +85,8 @@ class ArrayImplementation:
         key: Union[
             int,
             slice,
-            Tuple[Union[int, slice], ...],
+            "ellipsis",
+            Tuple[Union[int, slice, "ellipsis"], ...],
             "ArrayImplementation",
         ],
         /,
@@ -166,7 +170,8 @@ class ArrayImplementation:
         key: Union[
             int,
             slice,
-            Tuple[Union[int, slice], ...],
+            "ellipsis",
+            Tuple[Union[int, slice, "ellipsis"], ...],
             "ArrayImplementation",
         ],
         value: Union[bool, int, float, "ArrayImplementation"],

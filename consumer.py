@@ -1,5 +1,17 @@
 import enum
-from typing import Any, Optional, Tuple, TypeVar, Union, Protocol, runtime_checkable
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Optional,
+    Protocol,
+    Tuple,
+    TypeVar,
+    Union,
+    runtime_checkable,
+)
+
+if TYPE_CHECKING:
+    from builtins import ellipsis
 
 
 VendoredDtype = Any
@@ -83,7 +95,13 @@ class VendoredArrayProtocol(Protocol[A]):
 
     def __getitem__(
         self,
-        key: Union[int, slice, Tuple[Union[int, slice], ...], A],
+        key: Union[
+            int,
+            slice,
+            "ellipsis",
+            Tuple[Union[int, slice, "ellipsis"], ...],
+            A,
+        ],
         /,
     ) -> A:
         ...
@@ -142,7 +160,13 @@ class VendoredArrayProtocol(Protocol[A]):
 
     def __setitem__(
         self,
-        key: Union[int, slice, Tuple[Union[int, slice], ...], A],
+        key: Union[
+            int,
+            slice,
+            "ellipsis",
+            Tuple[Union[int, slice, "ellipsis"], ...],
+            A,
+        ],
         value: Union[bool, int, float, A],
         /,
     ) -> None:
