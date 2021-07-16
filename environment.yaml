@@ -1,0 +1,6 @@
+name: array-protocol
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - mypy==0.910
