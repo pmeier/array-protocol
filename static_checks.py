@@ -31,7 +31,7 @@ def test_device(self: VAP) -> VendoredDevice:
 DEVICE: VendoredDevice = test_device(AI)
 
 # ndim
-def test_ndim(self: VAP) -> VendoredDevice:
+def test_ndim(self: VAP) -> int:
     return self.ndim
 
 
