@@ -9,10 +9,11 @@ from consumer import (
     VendoredPyCapsule,
     VendoredShape,
 )
-from provider import ArrayImplementation
 
-AIT = ArrayImplementation
-AI = AIT()
+import numpy
+
+AIT = numpy.ndarray
+AI = numpy.array(1.0)
 VAP = TypeVar("VAP", bound=VendoredArrayProtocol)
 
 
@@ -23,12 +24,12 @@ def test_dtype(self: VAP) -> VendoredDtype:
 
 DTYPE: VendoredDtype = test_dtype(AI)
 
-# device
-def test_device(self: VAP) -> VendoredDevice:
-    return self.dtype
-
-
-DEVICE: VendoredDevice = test_device(AI)
+# # device
+# def test_device(self: VAP) -> VendoredDevice:
+#     return self.dtype
+#
+#
+# DEVICE: VendoredDevice = test_device(AI)
 
 # ndim
 def test_ndim(self: VAP) -> int:
@@ -85,17 +86,16 @@ AND_BOOL = test_and(AI, False)
 AND_INT = test_and(AI, 0)
 AND_ARRAY = test_and(AI, AI)
 
-
-# __array_namespace__
-def test_array_namespace(
-    self: VAP, api_version: Optional[str] = None
-) -> VendoredArrayNamespace:
-    return self.__array_namespace__(api_version=api_version)
-
-
-ARRAY_NAMESPACE_NONE: Any = test_array_namespace(AI, api_version=None)
-ARRAY_NAMESPACE_STR: Any = test_array_namespace(AI, api_version="api_version")
-
+# # __array_namespace__
+# def test_array_namespace(
+#     self: VAP, api_version: Optional[str] = None
+# ) -> VendoredArrayNamespace:
+#     return self.__array_namespace__(api_version=api_version)
+#
+#
+# ARRAY_NAMESPACE_NONE: Any = test_array_namespace(AI, api_version=None)
+# ARRAY_NAMESPACE_STR: Any = test_array_namespace(AI, api_version="api_version")
+#
 # __bool__
 def test_bool(self: VAP) -> bool:
     return bool(self)
@@ -103,22 +103,22 @@ def test_bool(self: VAP) -> bool:
 
 BOOL: bool = test_bool(AI)
 
-# __dlpack__
-def test_dlpack(self: VAP, stream: Any = None) -> VendoredPyCapsule:
-    return self.__dlpack__(stream=stream)
-
-
-DLPACK_NONE: VendoredPyCapsule = test_dlpack(AI, stream=None)
-DLPACK_INT: VendoredPyCapsule = test_dlpack(AI, stream=0)
-DLPACK_OBJECT: VendoredPyCapsule = test_dlpack(AI, stream=object())
-
-# __dlpack_device__
-def test_dlpack_device(self: VAP) -> Tuple[enum.IntEnum, int]:
-    return self.__dlpack_device__()
-
-
-DLPACK_DEVICE: Tuple[enum.IntEnum, int] = test_dlpack_device(AI)
-
+# # __dlpack__
+# def test_dlpack(self: VAP, stream: Any = None) -> VendoredPyCapsule:
+#     return self.__dlpack__(stream=stream)
+#
+#
+# DLPACK_NONE: VendoredPyCapsule = test_dlpack(AI, stream=None)
+# DLPACK_INT: VendoredPyCapsule = test_dlpack(AI, stream=0)
+# DLPACK_OBJECT: VendoredPyCapsule = test_dlpack(AI, stream=object())
+#
+# # __dlpack_device__
+# def test_dlpack_device(self: VAP) -> Tuple[enum.IntEnum, int]:
+#     return self.__dlpack_device__()
+#
+#
+# DLPACK_DEVICE: Tuple[enum.IntEnum, int] = test_dlpack_device(AI)
+#
 # __eq__
 def test_eq(self: VAP, other: Any) -> VAP:
     return self == other

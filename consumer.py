@@ -30,9 +30,9 @@ class VendoredArrayProtocol(Protocol[A]):
     def dtype(self) -> VendoredDtype:
         ...
 
-    @property
-    def device(self) -> VendoredDevice:
-        ...
+    # @property
+    # def device(self) -> VendoredDevice:
+    #     ...
 
     @property
     def ndim(self) -> int:
@@ -59,21 +59,21 @@ class VendoredArrayProtocol(Protocol[A]):
     def __and__(self, other: Union[bool, int, A], /) -> A:
         ...
 
-    def __array_namespace__(
-        self, /, *, api_version: Optional[str] = None
-    ) -> VendoredArrayNamespace:
-        ...
+    # def __array_namespace__(
+    #     self, /, *, api_version: Optional[str] = None
+    # ) -> VendoredArrayNamespace:
+    #     ...
 
     def __bool__(self) -> bool:
         ...
 
-    def __dlpack__(
-        self, /, *, stream: Optional[Union[int, Any]] = None
-    ) -> VendoredPyCapsule:
-        ...
+    # def __dlpack__(
+    #     self, /, *, stream: Optional[Union[int, Any]] = None
+    # ) -> VendoredPyCapsule:
+    #     ...
 
-    def __dlpack_device__(self) -> Tuple[enum.IntEnum, int]:
-        ...
+    # def __dlpack_device__(self) -> Tuple[enum.IntEnum, int]:
+    #     ...
 
     # This overrides the input type, since object.__eq__ handles any input
     # This overrides the return type, since object.__eq__ returns a bool
